@@ -14,5 +14,6 @@
 .gitignore
 .DS_Store
 .vscode
+.history
 
 node_modules

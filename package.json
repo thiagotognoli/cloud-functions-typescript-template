@@ -5,9 +5,11 @@
     "main": "index.js",
     "config": {
         "function_name": "helloWorld",
-        "region": "",
-        "gcp_project": "",
-        "runtime": ""
+        "region": "us-central1",
+        "gcp_project": "Test",
+        "runtime": "nodejs16",
+        "entry_point": "helloWorld",
+        "extra_params": "--timeout 60s --max-instances 1"
     },
     "scripts": {
         "clean": "rimraf \"functions/*\"",
@@ -16,7 +18,7 @@
         "cp-package": "copyfiles package.json functions/src",
         "build": "run-s clean lint tsc cp-package",
         "test": "mocha \"functions/test/\"",
-        "deploy": "gcloud functions deploy $npm_package_config_function_name --runtime $npm_package_config_runtime --region=$npm_package_config_region --trigger-http --project $npm_package_config_gcp_project"
+        "deploy": "gcloud functions deploy $npm_package_config_function_name --gen2 --runtime $npm_package_config_runtime --entry-point $npm_package_config_entry_point --source function/src --region=$npm_package_config_region --trigger-http --project $npm_package_config_gcp_project $npm_package_config_extra_params"
     },
     "bin": {
         "create-project": "./cli.js"
@@ -28,7 +30,9 @@
     ],
     "author": "\"@flatfisher <kyoheitsuda@flatfish.jp> (https://kyohei.flatfish.jp)",
     "license": "MIT",
-    "dependencies": {},
+    "dependencies": {
+        "@google-cloud/functions-framework": "^3.1.2"
+    },
     "devDependencies": {
         "@types/chai": "4.3.3",
         "@types/chai-http": "4.2.0",

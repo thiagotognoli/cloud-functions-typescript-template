@@ -16,10 +16,12 @@ $ npx create-project your-directory
 
 ```
 "config": {
-  "function_name": "Your function name, it must match the name of export function in index.ts.",
-  "region": "europe-west1 or us-east1 or us-central1 or asia-northeast1",
+  "function_name": "Your function name",
+  "region": "us-central1 or europe-west1 or us-east1 or asia-northeast1",
   "gcp_project": "Your GCP project name",
-  "runtime": "nodejs8"
+  "runtime": "nodejs16",
+  "entry_point": "Your function entrypoint name, it must match the name of export function in index.ts.",
+  "extra_params": "Extra params to gcloud deploy"
 }
 ```
 
@@ -45,8 +47,11 @@ $ npm run test
 ## Deploy
 
 ```
-$ npm run deploy --prefix functions/src/
+$ npm run deploy 
 ```
 
+```
+$ npm run deploy --prefix functions/src/
+```
 ## Contribution
 Feel free to create a pull request:) Recommended settings, bug fixes, descriptions and more!
