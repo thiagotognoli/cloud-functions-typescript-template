@@ -1,8 +1,6 @@
 import * as functions from '@google-cloud/functions-framework';
-import { Request, Response } from '@google-cloud/functions-framework';
 
-
-// export function helloWorld(_: Request, res: Response) {
+// export function helloWorld(_: functions.Request, res: functions.Response) {
 //     try {
 //         res.status(200)
 //         res.send('Hello World')
@@ -13,6 +11,6 @@ import { Request, Response } from '@google-cloud/functions-framework';
 // }
 
 
-functions.http('helloWorld', (req: Request, res: Response) => {
+functions.http('helloWorld', (req: functions.Request, res: functions.Response) => {
     res.status(200).send(`Hello World!`);
 });

@@ -15,5 +15,6 @@
 .DS_Store
 .vscode
 .history
+.gitkeep
 
 node_modules

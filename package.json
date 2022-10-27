@@ -1,12 +1,13 @@
 {
     "name": "google-cloud-functions-typescript",
-    "version": "0.0.4",
+    "version": "0.0.0",
     "description": "This is a TypeScript based Cloud Functions template.",
     "main": "index.js",
     "config": {
         "function_name": "helloWorld",
         "region": "us-central1",
-        "gcp_project": "Test",
+        "gcp_project_name": "Test",
+        "gcp_project": "tokyo-analyst-136519",
         "runtime": "nodejs16",
         "entry_point": "helloWorld",
         "extra_params": "--timeout 60s --max-instances 1"
@@ -18,7 +19,7 @@
         "cp-package": "copyfiles package.json functions/src",
         "build": "run-s clean lint tsc cp-package",
         "test": "mocha \"functions/test/\"",
-        "deploy": "gcloud functions deploy $npm_package_config_function_name --gen2 --runtime $npm_package_config_runtime --entry-point $npm_package_config_entry_point --source function/src --region=$npm_package_config_region --trigger-http --project $npm_package_config_gcp_project $npm_package_config_extra_params"
+        "deploy": "gcloud functions deploy $npm_package_config_function_name --gen2 --runtime $npm_package_config_runtime --source functions/src --entry-point $npm_package_config_entry_point --region=$npm_package_config_region --trigger-http --project $npm_package_config_gcp_project $npm_package_config_extra_params"
     },
     "bin": {
         "create-project": "./cli.js"
