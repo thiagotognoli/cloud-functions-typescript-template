@@ -19,7 +19,10 @@
         "cp-package": "copyfiles package.json functions/src",
         "build": "run-s clean lint tsc cp-package",
         "test": "mocha \"functions/test/\"",
-        "deploy": "gcloud functions deploy $npm_package_config_function_name --gen2 --runtime $npm_package_config_runtime --source functions/src --entry-point $npm_package_config_entry_point --region=$npm_package_config_region --trigger-http --project $npm_package_config_gcp_project $npm_package_config_extra_params"
+        "gdeploy": "gcloud functions deploy $npm_package_config_function_name --gen2 --runtime $npm_package_config_runtime --source functions/src --entry-point $npm_package_config_entry_point --region $npm_package_config_region --project $npm_package_config_gcp_project --trigger-http $npm_package_config_extra_params",
+        "deploy": "run-s build gdeploy",
+        "get-gcp-uri": "gcloud functions describe $npm_package_config_function_name --gen2 --region $npm_package_config_region --project $npm_package_config_gcp_project --format=\"value(serviceConfig.uri)\""
+
     },
     "bin": {
         "create-project": "./cli.js"
